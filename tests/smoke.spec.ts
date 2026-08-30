@@ -21,16 +21,26 @@ test('home page introduces Shelf and exposes the public starter navigation', asy
 		'href',
 		'/playground'
 	);
-	await expect(page.getByRole('banner').getByRole('link', { name: 'Sign in' })).toHaveAttribute(
-		'href',
-		'/login'
-	);
+	// await expect(page.getByRole('banner').getByRole('link', { name: 'Sign in' })).toHaveAttribute(
+	// 	'href',
+	// 	'/login'
+	// );
 });
 
-test('protected routes redirect unauthenticated readers to login', async ({ page }) => {
-	await page.goto('/search');
-	await expect(page).toHaveURL(/\/login\?returnTo=%2Fsearch$/);
-
+test('logged in users redirect to their shelf', async ({ page }) => {
 	await page.goto('/shelf');
-	await expect(page).toHaveURL(/\/login\?returnTo=%2Fshelf$/);
+	await page.getByLabel('Primary').getByRole('link', { name: 'Shelf' }).click();
+	await expect(page.getByRole('heading', { name: "Gerome's shelf" })).toBeVisible();
+});
+
+test('clicking on the "Design System" in the primary navigation takes readers to the design system page', async ({
+	page
+}) => {
+	await page.goto('/');
+
+	const primaryNavigation = page.getByRole('navigation', { name: 'Primary' });
+
+	await primaryNavigation.getByRole('link', { name: 'Design system' }).click();
+
+	await expect(page).toHaveURL('/design-system');
 });

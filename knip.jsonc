@@ -1,0 +1,20 @@
+{
+	"$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+	// SvelteKit, Vite, Vitest, Playwright, Drizzle, ESLint, Prettier, and Tailwind
+	// plugins are enabled from package.json. Their route/config/test entries are
+	// picked up automatically — do not re-list those patterns here.
+	"treatConfigHintsAsErrors": true,
+	"ignoreExportsUsedInFile": true,
+	// Installed for later course labs (accessibility and bundle visualization).
+	"ignoreDependencies": ["@axe-core/playwright", "rollup-plugin-visualizer"],
+	// Public surfaces wired up in later labs; treat them as entries so Knip
+	// does not report the modules themselves as unused files.
+	"entry": ["src/lib/server/shelf-entries.ts", "tests/data/index.ts"],
+	// Seed/CRUD helpers and re-exports that later labs import.
+	"ignoreIssues": {
+		"src/lib/server/books.ts": ["exports"],
+		"src/lib/server/db/index.ts": ["exports", "types"],
+		"src/lib/server/users.ts": ["exports"],
+		"tests/helpers/seed.ts": ["exports"]
+	}
+}

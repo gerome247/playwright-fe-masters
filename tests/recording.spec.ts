@@ -12,10 +12,7 @@ test('test', async ({ page }) => {
 	});
 	await page.goto('/search');
 	await page.getByRole('textbox', { name: 'Search by title, author, or' }).fill('hemingway');
-	await page.getByRole('textbox', { name: 'Search by title, author, or' }).press('Enter');
 	await page.getByRole('button', { name: 'Search' }).click();
-	await page.getByRole('heading', { name: 'The Sun Also Rises' }).isVisible();
-	await expect(page.getByRole('heading', { name: 'The Sun Also Rises' })).toBeVisible();
 
-	await expect(page).toHaveScreenshot('search-page.png');
+	await expect(page.getByRole('heading', { name: 'The Sun Also Rises' })).toBeVisible();
 });

@@ -61,6 +61,6 @@ Per `CLAUDE.md`, a failing Playwright test is fixed by fixing the app or the tes
 
 1. Record real usage (Playwright codegen, or hand-written from `getByRole`).
 2. Commit. Let the pre-commit gate run the recording against the real app and the real formatting rules.
-3. When it fails, read *why* — a broken assertion, a missing script, a config bug, and an actually-broken feature all fail the same gate but need different fixes.
+3. When it fails, read _why_ — a broken assertion, a missing script, a config bug, and an actually-broken feature all fail the same gate but need different fixes.
 4. Fix root causes, never the gate itself or the assertion's target.
 5. Commit again. A clean pass means the recording now matches reality, and every future commit is checked against it automatically.

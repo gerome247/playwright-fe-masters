@@ -27,19 +27,19 @@ Generation isn't a separate command — it's wired into the Playwright project g
 
 ```ts
 projects: [
-  {
-    name: 'setup',
-    testMatch: 'tests/auth.setup.ts'
-  },
-  {
-    name: 'chromium',
-    use: {
-      browserName: 'chromium',
-      storageState: 'playwright/.authentication/user.json'
-    },
-    dependencies: ['setup']
-  }
-]
+	{
+		name: 'setup',
+		testMatch: 'tests/auth.setup.ts'
+	},
+	{
+		name: 'chromium',
+		use: {
+			browserName: 'chromium',
+			storageState: 'playwright/.authentication/user.json'
+		},
+		dependencies: ['setup']
+	}
+];
 ```
 
 Because `chromium` declares `setup` as a dependency, every `npm test` run executes `tests/auth.setup.ts` first, automatically, before any other spec. That file:

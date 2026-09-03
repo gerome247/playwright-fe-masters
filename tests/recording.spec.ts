@@ -7,8 +7,8 @@ test.use({
 
 test('test', async ({ page }) => {
 	await page.routeFromHAR('../playwright/recordings/openLibrary.har', {
-		url: '**/openlibrary.org/**'
-		//update: true
+		url: '**/openlibrary.org/**',
+		update: true
 	});
 	await page.goto('/search');
 	await page.getByRole('textbox', { name: 'Search by title, author, or' }).fill('hemingway');

@@ -34,7 +34,6 @@ This starter is meant to grow with the course. These pieces are added later:
 - live [Open Library](https://openlibrary.org/) search integration
 - shelf CRUD flows and persisted ratings
 - stats, goals, and admin features
-- storage-state auth for Playwright
 - HAR recording
 - accessibility automation
 - visual regression
@@ -145,6 +144,11 @@ A task is not done until all three exit zero.
 - End-to-end tests live in `tests/` and run with Playwright. The starter suite is intentionally small and only covers public starter routes.
 - Playwright locators follow the rules in `CLAUDE.md`: `getByRole` first, then `getByLabel` / `getByText`, and `data-testid` only when semantics genuinely don't exist. No raw CSS or XPath selectors, and no `waitForTimeout` or `waitForLoadState('networkidle')`.
 - Later course labs add the larger Playwright setup, extra scripts, and the stricter verification loop.
+- Protected-route specs authenticate via a saved storage state rather than logging in per test. See [`PLAYWRIGHT-AUTH.md`](./PLAYWRIGHT-AUTH.md) for how `playwright/.authentication/user.json` gets generated.
+
+## Pre-commit verification (lefthook)
+
+`npm install` runs the `prepare` script, which includes `lefthook install`, wiring a pre-commit hook that runs `npm run format` and `npm test` before any commit is allowed through. See [`LEFTHOOK.md`](./LEFTHOOK.md) for the installation steps and a case study of the hook catching real bugs in a Playwright recording.
 
 ## Project layout
 

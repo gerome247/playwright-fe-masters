@@ -34,7 +34,6 @@ This starter is meant to grow with the course. These pieces are added later:
 - live [Open Library](https://openlibrary.org/) search integration
 - shelf CRUD flows and persisted ratings
 - stats, goals, and admin features
-- HAR recording
 - accessibility automation
 - visual regression
 - performance budgets
@@ -145,6 +144,7 @@ A task is not done until all three exit zero.
 - Playwright locators follow the rules in `CLAUDE.md`: `getByRole` first, then `getByLabel` / `getByText`, and `data-testid` only when semantics genuinely don't exist. No raw CSS or XPath selectors, and no `waitForTimeout` or `waitForLoadState('networkidle')`.
 - Later course labs add the larger Playwright setup, extra scripts, and the stricter verification loop.
 - Protected-route specs authenticate via a saved storage state rather than logging in per test. See [`PLAYWRIGHT-AUTH.md`](./PLAYWRIGHT-AUTH.md) for how `playwright/.authentication/user.json` gets generated.
+- `/search` hits the live Open Library catalog from the browser. [`tests/recording.spec.ts`](./tests/recording.spec.ts) records or replays that traffic from a HAR so the spec can assert a specific title without depending on the live API. See [`PLAYWRIGHT-HAR.md`](./PLAYWRIGHT-HAR.md).
 
 ## Pre-commit verification (lefthook)
 

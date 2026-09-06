@@ -24,7 +24,8 @@ Do not report a task complete with any of these failing. If a failure looks unre
 - Write a failing test before the implementation. Commit the test first.
 - Unit tests live next to the file under test as `<name>.test.ts` and run with Vitest.
 - End-to-end tests live in `tests/end-to-end/` and run with Playwright.
-- The starter Playwright suite is intentionally small. Later course labs add storage state, HAR replay, dossiers, accessibility, and visual coverage.
+- The starter Playwright suite is intentionally small. Later course labs add dossiers, accessibility, and visual coverage.
+- Open Library search traffic is recorded and replayed from a HAR. See [`PLAYWRIGHT-HAR.md`](./PLAYWRIGHT-HAR.md).
 
 ## Playwright locator rules
 
